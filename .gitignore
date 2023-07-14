@@ -1,0 +1,6 @@
+# Ignorer le repertoire node_modules
+node_modules
+
+# Ignorer les fichiers de configuration
+pack*.json
+.eslintrc.js
