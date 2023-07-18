@@ -4,10 +4,491 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2247cba2a3.js" crossorigin="anonymous"></script>
     <script type="module" src="./scripts/app.js"></script>
     <title>Les Petits Plats - Index</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="navbar-brand m-3 ps-3">
+                <img src="./assets/logo/Logo.png" alt="Logo de l'entreprise">
+            </a>
+        </div>
+        <div id="main-search-container" class="container w-50 h-75 d-flex flex-column justify-content-center">
+            <h1 class="row text-warning text-center">
+                <p class="font-weight-bold">
+                    CHERCHEZ PARMI PLUS DE 1500 RECETTES
+                    DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+                </p>
+            </h1>
+            <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-1">
+                <input type="text" class="col-10 border-0" placeholder="Rechercher une recette, un ingrédient, ..."> 
+                <!-- TODO ajouter les classes Bootstrap pour gérer les formulaires -->
+                <button type="button" class="btn btn-dark border-0 col-1"><i class="bi bi-search"></i></button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <section id="tag-search" class="container"> 
+            <div class="row d-flex flex-row justify-content-start align-items-start m-0">
+                <ul class="col my-3 rounded-2 bg-white mx-3">
+                    <div class="d-flex align-items-center mb-2 justify-content-between h-100"><!-- TODO gérer les classes lorsque les UL sont fermés (ajouter h-100) et lorsqu'elles sont ouvertes (enlever h-100)-->
+                        <h2 class="m-0 p-0 fs-6">
+                            Ingrédients
+                        </h2>
+                        <div>
+                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
+                        </div>
+                    </div>
+                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
+                        <input type="text" class="col-8 border-0 p-0 m-0">
+                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
+                    </form>
+                    <p>Test1</p>
+                    <p>Test2</p>
+                    <p>Test3</p>
+                    <p>Test4</p>
+                    <p>Test5</p>
+                    <p>Test6</p>
+                </ul>
+                <ul class="col my-3 rounded-2 bg-white mx-3">
+                    <div class="d-flex align-items-center mb-2 justify-content-between h-100">
+                        <h2 class="m-0 p-0  fs-6">
+                            Appareils
+                        </h2>
+                        <div>
+                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
+                        </div>
+                    </div>
+                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
+                        <input type="text" class="col-8 border-0 p-0 m-0">
+                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
+                    </form>
+                    <p>Test1</p>
+                    <p>Test2</p>
+                    <p>Test3</p>
+                    <p>Test4</p>
+                    <p>Test5</p>
+                    <p>Test6</p>
+                </ul>
+                <ul class="col my-3 rounded-2 bg-white mx-3">
+                    <div class="d-flex align-items-center mb-2 justify-content-between h-100">
+                        <h2 class="m-0 p-0 fs-6">
+                            Ustensiles
+                        </h2>
+                        <div>
+                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
+                        </div>
+                        
+                    </div>
+                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
+                        <input type="text" class="col-8 border-0 p-0 m-0">
+                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
+                    </form>
+                    <p>Test1</p>
+                    <p>Test2</p>
+                    <p>Test3</p>
+                    <p>Test4</p>
+                    <p>Test5</p>
+                    <p>Test6</p>
+                </ul>
+                <div id="recipes-result" class="col offset-3 text-end d-inline my-3 d-flex flex-column justify-content-center fw-bolder fs-5">03 recettes</div>
+            </div>
+        </section>
+        <section class="container h-100 mt-5">
+            <div id="recipes" class="row row-cols-3 d-flex flex-row flex-wrap justify-content-between">
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card col bg-white rounded-4 mb-4 p-0 d-flex flex-column justify-content-between">
+                    <img src="./assets/recipes/Recette03.jpg" class="card-img-top" alt="">
+                    <div class="card-body container d-flex flex-column justify-content-center gap-5 px-4 py-0">
+                        <h3 class="card-title fs-5">Nom de la recette</h3>
+                        <div>
+                            <h4 class="card-title fw-bold fs-6">Recette</h4>
+                            <p class="card-text">Mettre les glaçons à votre goût dans le blender, Ajouter le lait  la crème de coco, le jus de 2 citrons et le sucre ensemble. Mixer jusqu'à obtenir la consistance désirée.</p>
+                        </div>
+                        <div class="">
+                            <h4 class="card-title fs-6 fw-bold">Ingrédients</h4>
+                            <div class="row row-cols-2 d-flex flex-row justify-content-between">
+                                <div class="col">
+                                    <p class="m-0">Lait de coco</p>
+                                    <p class="custom-color">400 ml</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Jus de citron</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Crême de coco</p>
+                                    <p class="custom-color">4 cuillères</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Sucre</p>
+                                    <p class="custom-color">20g</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Glaçon</p>
+                                    <p class="custom-color">2</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+        </section>
+    </main>
 </body>
 </html>

@@ -24,6 +24,7 @@ Les objectifs principaux de ce projet sont :
 Le projet est développé en utilisant les technologies suivantes :
 
 - HTML5 et CSS3 pour la structure et la présentation du site.
+- Bootstrap comme framework CSS.
 - JavaScript pour la logique de recherche et l'interaction utilisateur.
 - Sass pour la génération de feuilles de style CSS avancées.
 - ESLint pour le formatage et la vérification statique du code JavaScript.
@@ -37,7 +38,7 @@ Pour exécuter localement le projet "Les Petits Plats", vous pouvez suivre les �
 
 1. Clonez le dépôt GitHub du projet : `git clone https://github.com/tthouvenot/les-petits-plats.git`
 2. Accédez au répertoire du projet : `cd les-petits-plats`
-3. Installez les dépendances en executant la commande suivant votre infrastructure
+3. Installez les dépendances en executant la commande selon votre infrastructure (ex: npm si vous avez node.js). Ou importez les fichiers si cela est      possible
 4. Configurez le fichier package.json en ajoutant dans la partie scripts: `"sass": "sass --watch ./sass/style.scss:./css/style.css"`
 5. Ou compilez les fichiers Sass en CSS : `sass ./sass/style.scss ./css/main.css`
 6. Ouvrez le fichier `index.html` dans votre navigateur préféré.
