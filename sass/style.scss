@@ -44,8 +44,8 @@ main{
     color:$main-text-color;
 
     ul {
-        height: 56px; //TODO changer la taille lorsqu'on ouvre le menu
-        overflow: hidden;
+        height: 556px; //TODO changer la taille lorsqu'on ouvre le menu
+        // overflow: hidden; // TODO changer le type d'overflow lorsqu'on ouvre le menu
     }
     
     h2 {
@@ -72,6 +72,11 @@ main{
     
     button{
         color: $alt-text-color;
+    }
+
+    #key-list{
+        height: 80%;
+        overflow: scroll;
     }
 
 }

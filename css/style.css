@@ -11888,8 +11888,7 @@ main {
   color: #1b1b1b;
 }
 #tag-search ul {
-  height: 56px;
-  overflow: hidden;
+  height: 556px;
 }
 #tag-search h2, #tag-search .h2 {
   color: #1b1b1b;
@@ -11911,6 +11910,10 @@ main {
 }
 #tag-search button {
   color: #7a7a7a;
+}
+#tag-search #key-list {
+  height: 80%;
+  overflow: scroll;
 }
 
 .test {

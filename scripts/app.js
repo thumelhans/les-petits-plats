@@ -1,8 +1,10 @@
 import { recipes } from './recipes.js'
 import { RecipeController } from './controllers/recipeController.js'
 
-//Initialise le controller
-
+/**
+ * Fonction gérant l'initialisation de l'application
+ *
+ */
 function startApp(){
     document.addEventListener('DOMContentLoaded', () => {
         const recipeController = new RecipeController(recipes)
