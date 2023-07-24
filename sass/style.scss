@@ -5,6 +5,7 @@ $font-main-title: 'Anton', sans-serif;
 $font-text: 'Manrope', sans-serif;
 $bckgrd-color: #ededed;
 $alt-bck-color: #fff;
+$hover-bck-color: #FFD15B;
 $main-text-color: #1b1b1b;
 $alt-text-color: #7a7a7a;
 $title-text-color: #000;
@@ -30,9 +31,30 @@ header{
         width: 52px;
         
         &:hover{
-            background-color: #FFD15B;
+            background-color: $hover-bck-color;
             color: $dark-text-emphasis;
         }
+    }
+
+}
+
+.bi-x{
+    display: flex;
+    align-items: center;
+    width: max-content;
+    font-size: 1.5rem;
+    cursor: pointer;
+    
+    &:hover{
+        transform: scale(1.2, 1.2);
+    }
+}
+
+#main-search{
+    width: calc(100% - 102px);
+
+    &:focus{
+        outline: none;
     }
 }
 
@@ -41,52 +63,158 @@ main{
 }
 
 #tag-search{
+    padding: 20px 0 0 0;
+    position: relative;
+    font-family: $font-text;
     color:$main-text-color;
-
+    display: flex;
+    flex-flow: row;
+    
     ul {
-        height: 556px; //TODO changer la taille lorsqu'on ouvre le menu
-        // overflow: hidden; // TODO changer le type d'overflow lorsqu'on ouvre le menu
-    }
-    
-    h2 {
-        color: $main-text-color;
-        font-family: $font-text;
-        font-size: 1rem;
-        font-weight: 500;
-    }
-
-    form {
-        border-radius: 2px;
-        border: $tag-search-color solid 1px;
-        margin-left: 0.05rem;
-        margin-right: 0.05rem;
-    }
-    
-    input{
-        color: $alt-text-color;
+        margin: 0;
+        padding: 0;
+        max-height: 330px;
+        overflow: hidden;
+        width: 20%;
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        background: $alt-bck-color;
+        border-radius: 11px;
+        -webkit-box-shadow: 3px 3px 15px 6px rgba(0,0,0,0.25); 
+        box-shadow: 3px 3px 15px 6px rgba(0,0,0,0.25);
+        display: flex;
+        flex-flow: column;
         
-        &:focus{
-            outline: none;
+        &:nth-child(2){
+            left: 25%;
+        }
+        
+        &:nth-child(3){
+            left: 50%;
         }
     }
     
-    button{
-        color: $alt-text-color;
+    .close-height{
+        height: 56px;
     }
 
+    
+    .tag-search-heading {
+        display: flex;
+        flex: row;
+        justify-content: space-between;
+        padding: 10px;
+        padding-bottom: 5px;
+        
+        h3 {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        button {
+            border: none;
+            background-color: $alt-bck-color;
+        }
+        
+    }
+    
+    .close-margin {
+        padding: 18px 10px 5px 10px;
+        margin-bottom: 10px;
+    }
+    
+    form {
+        margin:0 10px 10px 10px;
+        padding: 0px;
+        width: calc(100% - 20px);
+        border: solid $tag-search-color 1px;
+        border-radius: 2px;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        
+        input {
+            color: $alt-text-color;
+            margin: 0;
+            padding: 2px 5px;
+            width:90%;
+            border: none;
+            
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            color: $alt-text-color;
+            padding: 0;
+            margin: 0;
+            width:20%;
+            border: none;
+            background-color: $alt-bck-color;
+        }
+    }
+    
+    #recipes-result{
+        margin-top: 10px;
+        height: 56px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        gap: 3px;
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        p{
+            margin: 0;
+            padding: 0;
+        }
+    }
+    
     #key-list{
-        height: 80%;
+        height: 85%;
         overflow: scroll;
-    }
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        
+        li {
+            font-size: 0.875rem;
+            padding: 5px 10px;
+            margin: 0;
 
+            &:hover{
+                background-color: $hover-bck-color;
+                cursor: pointer;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #a5a5a5;
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #7c7c7c;
+        }
+    }
+    
 }
-.test {
+
+.test { // TODO Pense à retirer avant mise en production
     border: solid green 3px;
-    
 }
+
 .test2 {
-    border: solid blue 3px;
-    
+    border: solid blue 3px;    
+}
+
+.test3 {
+    border: solid pink 3px;    
 }
 
 #recipes-result {

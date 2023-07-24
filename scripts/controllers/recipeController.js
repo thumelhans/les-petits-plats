@@ -4,6 +4,10 @@ import { KeywordListView } from '../views/keywordListView.js'
 import { KeywordListView } from '../views/keywordListView.js'
 import { RecipeCounterView } from '../views/recipeCounterView.js'*/
 import { RecipeCardView } from '../views/recipeCardView.js'
+import { KeywordListEvent } from '../controllers/keywordListEventController.js'
+import { createHtmlElement } from '../views/htmlElementConstructor.js'
+import { RecipeCounterView } from '../views/recipeCounterView.js'
+import { FormController } from './formController.js'
 
 
 
@@ -17,8 +21,9 @@ export class RecipeController {
     constructor(recipes) {
         this._recipeModel = new RecipeModel(recipes)
         /* this._recipeListVieww = new RecipeListView()
-        this._keywordListView = new KeywordListView()
-        this._recipeCounterView = new RecipeCounterView()*/        
+        this._keywordListView = new KeywordListView()*/
+        this._keywordListEvent = new KeywordListEvent()
+        /*this._recipeCounterView = new RecipeCounterView()*/        
     }
 
     /**
@@ -35,12 +40,22 @@ export class RecipeController {
         if (searchResult.length > 0){
             searchResultList = this._recipeModel.getRecipe().filter(recipe => searchResult.includes(recipe.id))
             this.displayRecipe(searchResultList)
+            this.displayCounter(searchResultList)
         } else {
             this.displayRecipe()
+            this.displayCounter(this._recipeModel.getRecipe())
         }    
 
         //Gestion de l'affichage des mots clés
+        this._keywordListEvent.main()
         this.displayKeywords()
+
+        const test = new FormController()
+
+        test.getValue().then((value) => {
+            console.log(value)
+        })
+
     }
     
     /**
@@ -75,9 +90,9 @@ export class RecipeController {
         const ingredientArray = this.keywords(ingredients)
         const applianceArray = this.keywords(appliances)
         const ustensilArray = this.keywords(ustensils)
-        const keyWordView = new KeywordListView(ingredientArray, applianceArray, ustensilArray)
+        const keywordView = new KeywordListView(ingredientArray, applianceArray, ustensilArray)
 
-        keyWordView.keywordView()
+        keywordView.keywordView()
     }
     
     /**
@@ -102,8 +117,10 @@ export class RecipeController {
         return Array.from(newArraySet) // TODO Le test de comparaison doit se faire sur la recherche, mais quid des fonctions/méthodes pour l'affichage des data comme la liste des mots clés?
     }
     
-    displayCounter() {
+    displayCounter(result) {
+        const newCounterView = new RecipeCounterView(result)
 
+        newCounterView.counterView()
     }
 
     search() {

@@ -1,94 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/2247cba2a3.js" crossorigin="anonymous"></script>
-    <script type="module" src="./scripts/app.js"></script>
-    <title>Les Petits Plats - Index</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope&display=swap" rel="stylesheet">
+  <script type="module" src="./scripts/app.js"></script>
+  <title>Les Petits Plats - Index</title>
 </head>
 <body>
-    <header>
-        <div class="navbar">
-            <a href="index.html" class="navbar-brand m-3 ps-3">
-                <img src="./assets/logo/Logo.png" alt="Logo de l'entreprise">
-            </a>
+  <header>
+    <div class="navbar">
+      <a href="index.html" class="navbar-brand m-3 ps-3">
+        <img src="./assets/logo/Logo.png" alt="Logo de l'entreprise">
+      </a>
+    </div>
+    <div id="main-search-container" class="container w-50 h-75 d-flex flex-column justify-content-center">
+      <h1 class="row text-warning text-center">
+        <p class="font-weight-bold">
+          CHERCHEZ PARMI PLUS DE 1500 RECETTES
+          DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
+        </p>
+      </h1>
+      <form action="" id="main-search-form" class="row d-flex justify-content-between bg-white rounded-2 p-1">
+        <input type="text" id="main-search" class="col-10 border-0" placeholder="Rechercher une recette, un ingrédient, ...">
+        <!-- TODO ajouter les classes Bootstrap pour gérer les formulaires -->
+        <button type="button" class="btn btn-dark border-0 col-1"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </header>
+  <main>
+    <section id="tag-search" class="container"> 
+      <ul id="ingredient" class="close-height">
+        <div class="tag-search-heading close-margin">
+          <h3>
+            Ingrédients
+          </h3>
+          <button><i class="bi bi-chevron-down"></i></button> 
         </div>
-        <div id="main-search-container" class="container w-50 h-75 d-flex flex-column justify-content-center">
-            <h1 class="row text-warning text-center">
-                <p class="font-weight-bold">
-                    CHERCHEZ PARMI PLUS DE 1500 RECETTES
-                    DU QUOTIDIEN, SIMPLES ET DÉLICIEUSES
-                </p>
-            </h1>
-            <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-1">
-                <input type="text" class="col-10 border-0" placeholder="Rechercher une recette, un ingrédient, ..."> 
-                <!-- TODO ajouter les classes Bootstrap pour gérer les formulaires -->
-                <button type="button" class="btn btn-dark border-0 col-1"><i class="bi bi-search"></i></button>
-            </form>
+        <form action="">
+          <input type="text" name="" id="tag-ingredient">
+          <button type="button"><i class="bi bi-search"></i></button>
+        </form>
+      </ul>
+      <ul id="appliance" class="close-height">
+        <div class="tag-search-heading close-margin">
+          <h3>
+            Appareils
+          </h3>
+          <button><i class="bi bi-chevron-down"></i></button>
         </div>
-    </header>
-    <main>
-        <section id="tag-search" class="container"> 
-            <div class="row d-flex flex-row justify-content-start align-items-start m-0">
-                <ul id="ingredient" class="col my-3 rounded-2 bg-white mx-3">
-                    <div class="d-flex align-items-center mb-2 justify-content-between "><!-- TODO gérer les classes lorsque les UL sont fermés (ajouter h-100) et lorsqu'elles sont ouvertes (enlever h-100)-->
-                        <h2 class="m-0 p-0 fs-6">
-                            Ingrédients
-                        </h2>
-                        <div>
-                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
-                        </div>
-                    </div>
-                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
-                        <input type="text" class="col-8 border-0 p-0 m-0">
-                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
-                    </form>
-                    
-                </ul>
-                <ul id="appliance" class="col my-3 rounded-2 bg-white mx-3">
-                    <div class="d-flex align-items-center mb-2 justify-content-between ">
-                        <h2 class="m-0 p-0  fs-6">
-                            Appareils
-                        </h2>
-                        <div>
-                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
-                        </div>
-                    </div>
-                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
-                        <input type="text" class="col-8 border-0 p-0 m-0">
-                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
-                    </form>
-                    
-                </ul>
-                <ul id="ustensils" class="col my-3 rounded-2 bg-white mx-3">
-                    <div class="d-flex align-items-center mb-2 justify-content-between ">
-                        <h2 class="m-0 p-0 fs-6">
-                            Ustensiles
-                        </h2>
-                        <div>
-                            <i class="bi bi-chevron-down fs-6 m-0 p-0"></i>
-                        </div>
-                        
-                    </div>
-                    <form action="" class="row d-flex justify-content-between bg-white rounded-2 p-0 mb-3">
-                        <input type="text" class="col-8 border-0 p-0 m-0">
-                        <button type="button" class="btn border-0 offset-1 col-3"><i class="bi bi-search"></i></button>
-                    </form>
-                    
-                </ul>
-                <div id="recipes-result" class="col offset-3 text-end d-inline my-3 d-flex flex-column justify-content-center fw-bolder fs-5">03 recettes</div>
-            </div>
-        </section>
-        <section class="container h-100 mt-5">
-            <div id="recipes" class="row row-cols-3 d-flex flex-row flex-wrap justify-content-between">
-               
-            </div>
-        </section>
-    </main>
+        <form action="">
+          <input type="text" name="" id="tag-appliance">
+          <button type="button"><i class="bi bi-search"></i></button>
+        </form>
+      </ul>
+      <ul id="ustensils" class="close-height">
+        <div class="tag-search-heading close-margin">
+          <h3>
+            Ustensiles
+          </h3>
+          <button><i class="bi bi-chevron-down"></i></button>
+        </div>
+        <form action="">
+          <input type="text" name="" id="tag-ustensils">
+          <button type="button"><i class="bi bi-search"></i></button>
+        </form>
+      </ul>
+      <div id="recipes-result"><p>recettes</p></div>
+    </section>
+    
+    <section class="container h-100 mt-5">
+      <div id="recipes" class="row row-cols-3 d-flex flex-row flex-wrap justify-content-between">
+        <!-- TODO Pense à ajouter le timer en haut à droite de la carte -->
+      </div>
+    </section>
+  </main>
 </body>
 </html>

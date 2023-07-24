@@ -1,9 +1,5 @@
 import { createHtmlElement } from "./htmlElementConstructor.js"
 
-// Gère l'affichage des mots clés pour la recherche par tag
-
-
-
 export class KeywordListView {
     /**
      * Creates an instance of KeywordListView.
@@ -19,24 +15,19 @@ export class KeywordListView {
         this._listQuery = document.querySelectorAll('#tag-search ul')
     }
 
-    test(){
-        console.log('Noeud HTML', this._listQuery)
-        console.log('Ingrédients', this._ingredients)
-        console.log('Appareils', this._appliances)
-        console.log('Ustensils', this._ustensils)
-    }
-
     keywordView(){
 
         this._listQuery.forEach(element => {
-            const keywordId = "key-list"
-            let keywordHtmlElement = createHtmlElement('div', '' ,keywordId)
+            const keywordListId = "key-list"
+            
+            let keywordHtmlElement = createHtmlElement('div', '', keywordListId)
 
             if (element.id === 'ingredient') {
 
-                this._ingredients.sort().forEach(keyword => { // TODO ajouter une div pour restreindre le scroll exclusivement aux mots clés
-                    const ingredientHtmlElement = createHtmlElement('p') // TODO Je peux laisser en P ou en terme de bonne pratique ça doit être un lien ?
-                    ingredientHtmlElement.textContent = keyword
+                this._ingredients.sort().forEach(keyword => {
+                    const keywordId = keyword
+                    const ingredientHtmlElement = createHtmlElement('li', '', keywordId)
+                    ingredientHtmlElement.textContent = this.capitalizeFirstLetter(keyword)
                     keywordHtmlElement.append(ingredientHtmlElement)
                 })
                 element.append(keywordHtmlElement)
@@ -45,8 +36,9 @@ export class KeywordListView {
             if (element.id === 'appliance') {
                 
                 this._appliances.sort().forEach(keyword => {
-                    const applianceHtmlElement = createHtmlElement('p')
-                    applianceHtmlElement.textContent = keyword
+                    const keywordId = keyword
+                    const applianceHtmlElement = createHtmlElement('li', '', keywordId)
+                    applianceHtmlElement.textContent = this.capitalizeFirstLetter(keyword)
                     keywordHtmlElement.append(applianceHtmlElement)
                 })
                 element.append(keywordHtmlElement)
@@ -55,8 +47,9 @@ export class KeywordListView {
             if (element.id === 'ustensils') {
                 
                 this._ustensils.sort().forEach(keyword => {
-                    const ustensilsHtmlElement = createHtmlElement('p')
-                    ustensilsHtmlElement.textContent = keyword
+                    const keywordId = keyword
+                    const ustensilsHtmlElement = createHtmlElement('li', keywordId)
+                    ustensilsHtmlElement.textContent = this.capitalizeFirstLetter(keyword)
                     keywordHtmlElement.append(ustensilsHtmlElement)
                 })
                 element.append(keywordHtmlElement)
@@ -66,4 +59,7 @@ export class KeywordListView {
 
     }
 
+    capitalizeFirstLetter(word){
+        return word.charAt(0).toUpperCase() + word.slice(1)
+    }
 }
