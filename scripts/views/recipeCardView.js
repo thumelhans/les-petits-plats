@@ -43,6 +43,7 @@ export class RecipeCardView {
             'd-flex',
             'flex-column',
             'justify-content-between',
+            'recipe-card'
         ]
         const card = createHtmlElement('article', articleClass)
 

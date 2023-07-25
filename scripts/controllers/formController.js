@@ -11,6 +11,7 @@ export class FormController {
         this._tagSearchFormButton = document.querySelector('#tag-search form button')
         this._searchValue = null
         this._resetInputButton
+        this._updateCallback = null
         
         this.formMainSearchEvent()
         this.forTagSearchEvent()
@@ -77,6 +78,7 @@ export class FormController {
     resetButtonEvent(input){
         this._resetInputButton.addEventListener('click', (e) => {
             this.cleanInputField(input)
+            this.updateValue('')
             this._resetInputButton.remove()
         })
     }
@@ -84,18 +86,23 @@ export class FormController {
     updateValue(input) {
         this._searchValue = input.value
         console.log('Valeur mise à jour', this._searchValue)
+
+        if (this._updateCallback) {
+            this._updateCallback(this._searchValue)
+        }
     }
 
     cleanInputField(input){
         input.value = ''
     }
     
-    getValue() {
+    async getValue() {
         return new Promise((resolve) => {
             const intervalId = setInterval(() => {
                 if (this._searchValue !== null){
                     clearInterval(intervalId)
                     resolve(this._searchValue.toLowerCase())
+                    this._searchValue = null
                 }
             }, 100)
         })
@@ -105,5 +112,10 @@ export class FormController {
         const regex = /^[A-Za-zÀ-ÿ][a-zÀ-ÿ-]+$/
         return regex.test(word)
     }
+
+    setUpdateCallback(callback) {
+        this._updateCallback = callback
+    }
+
     
 }

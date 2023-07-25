@@ -8,84 +8,86 @@ import { KeywordListEvent } from '../controllers/keywordListEventController.js'
 import { createHtmlElement } from '../views/htmlElementConstructor.js'
 import { RecipeCounterView } from '../views/recipeCounterView.js'
 import { FormController } from './formController.js'
+import { Search } from './searchController.js'
 
 
 
 /**
  * Classe permettant de coordonner les interactions entre les modèles et les vues
- *
- * @export
- * @class RecipeController
- */
+*
+* @export
+* @class RecipeController
+*/
 export class RecipeController {
     constructor(recipes) {
         this._recipeModel = new RecipeModel(recipes)
         /* this._recipeListVieww = new RecipeListView()
         this._keywordListView = new KeywordListView()*/
         this._keywordListEvent = new KeywordListEvent()
-        /*this._recipeCounterView = new RecipeCounterView()*/        
+        /*this._recipeCounterView = new RecipeCounterView()*/
+        this._searchValue = ''
+        this._filteredRecipes = this._recipeModel.getRecipe()
+        this._newCounterView = new RecipeCounterView(this._filteredRecipes)
+        this._counterViewAdded = false
     }
-
+    
     /**
      * Méthode permettant l'initialisation du controller
-     *
-     * @memberof RecipeController
-     */
-    init () {
-        
-        //Gestion de l'affichage des recettes
-        const searchResult = this.search() //Doit être le return de la méthode de recherche
-        let searchResultList
-
-        if (searchResult.length > 0){
-            searchResultList = this._recipeModel.getRecipe().filter(recipe => searchResult.includes(recipe.id))
-            this.displayRecipe(searchResultList)
-            this.displayCounter(searchResultList)
-        } else {
-            this.displayRecipe()
-            this.displayCounter(this._recipeModel.getRecipe())
-        }    
-
+    *
+    * @memberof RecipeController
+    */
+    async init () {
+       
         //Gestion de l'affichage des mots clés
         this._keywordListEvent.main()
         this.displayKeywords()
-
-        const test = new FormController()
-
-        test.getValue().then((value) => {
-            console.log(value)
+        
+        
+        //Gestion de la recherche
+        const searchInputs = document.querySelectorAll('input')
+        const formController = new FormController()
+        
+        
+        formController.setUpdateCallback(async (updateValue) =>{ // TODO gérer la suppression du champ par la croix
+            this._searchValue = updateValue
+            const resultRecipeID = this.search(this._searchValue)
+            this._filteredRecipes = this._recipeModel.getRecipe().filter((recipe) => resultRecipeID.includes(recipe.id))
+            
+            //Gestion de l'affichage des recettes
+            this.updateDisplay()
         })
-
+        
+        this.updateDisplay()
+        
+        searchInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                formController.updateValue(input)
+            })
+        })
+        
     }
     
     /**
      * Méthode permettant de gérer l'affichage des cartes des recettes
-     *
-     * @param {array} searchResult // Tableau des recettes trouver ou pas dans la fonction de recherche
-     * @memberof RecipeController
-     */
-    displayRecipe(searchResult) {
-        const recipesList = this._recipeModel.getRecipe()
-        let recipeView
+    *
+    * @param {array} searchResult // Tableau des recettes trouver ou pas dans la fonction de recherche
+    * @memberof RecipeController
+    */
+    async displayRecipe() {
+        const recipesList = this._filteredRecipes
+        const recipeView = recipesList.map((recipe) => new RecipeCardView(recipe))
+        
+        recipeView.forEach(recipe => {
+            recipe.createRecipeCard()
+        })
 
-        if(searchResult) {
-            recipeView = searchResult.map((recipe) => new RecipeCardView(recipe))
-        } else {
-            recipeView = recipesList.map((recipe) => new RecipeCardView(recipe))
-        }
-
-        if (recipeView !== undefined){ //recipeView sera toujours défini soit par le tagsearch soit par le mainsearch soit par défaut
-            recipeView.forEach(recipe => {
-                recipe.createRecipeCard()
-            })
-        }
     }
-
+    
     displayKeywords() {
         const ingredients = this._recipeModel.getRecipeIngredients()
         const appliances = this._recipeModel.getRecipeAppliances()
         const ustensils = this._recipeModel.getRecipeUstensils()
-
+        
         
         const ingredientArray = this.keywords(ingredients)
         const applianceArray = this.keywords(appliances)
@@ -97,10 +99,10 @@ export class RecipeController {
     
     /**
      * Méthode permettant de récupérer les mots clés en supprimant les doublons
-     *
-     * @param {array} array
-     * @return {array} Retourne la liste des mots clés 
-     */
+    *
+    * @param {array} array
+    * @return {array} Retourne la liste des mots clés 
+    */
     keywords(array){ // TODO Je sais que je peux résoudre le problème plus facilement, mais je veux apprendre à manipuler les objets et tableaux donc aller chercher des choses complexes
         const keyToExclude = 'id'
         const typeOfTest = Object.values(array[0])
@@ -117,15 +119,38 @@ export class RecipeController {
         return Array.from(newArraySet) // TODO Le test de comparaison doit se faire sur la recherche, mais quid des fonctions/méthodes pour l'affichage des data comme la liste des mots clés?
     }
     
-    displayCounter(result) {
-        const newCounterView = new RecipeCounterView(result)
+    displayCounter() {
 
-        newCounterView.counterView()
+        if(!this._counterViewAdded){
+            this._newCounterView.createCounterView()
+            this._counterViewAdded = true
+        }
+
+        this._newCounterView.updateCounterView(this._filteredRecipes)
     }
 
-    search() {
+    search(inputWord) {
+        const userNewSearch = new Search(this._recipeModel, 'main')
         let searchResult = []
-
+        
+        searchResult = userNewSearch.search(inputWord)
+        
         return searchResult
+    }
+    
+    async updateDisplay() {
+        
+        // Effacer les anciennes cartes avant d'afficher les nouvelles
+        this.clearRecipeDisplay()
+        await this.displayRecipe()
+        this.displayCounter()
+    }
+    
+    clearRecipeDisplay() {
+        const recipeCards = document.querySelectorAll('.recipe-card')
+        
+        recipeCards.forEach((card) => {
+            card.remove()
+        })
     }
 }
