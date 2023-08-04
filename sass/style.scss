@@ -63,7 +63,9 @@ main{
 }
 
 #tag-search{
+    height: 70px;
     padding: 20px 0 0 0;
+    margin-bottom: 15px;
     position: relative;
     font-family: $font-text;
     color:$main-text-color;
@@ -73,7 +75,6 @@ main{
     ul {
         margin: 0;
         padding: 0;
-        max-height: 330px;
         overflow: hidden;
         width: 20%;
         position: absolute;
@@ -85,6 +86,7 @@ main{
         box-shadow: 3px 3px 15px 6px rgba(0,0,0,0.25);
         display: flex;
         flex-flow: column;
+        gap: 10px;
         
         &:nth-child(2){
             left: 25%;
@@ -93,19 +95,20 @@ main{
         &:nth-child(3){
             left: 50%;
         }
+
     }
     
+    
+
     .close-height{
         height: 56px;
     }
-
     
     .tag-search-heading {
         display: flex;
         flex: row;
         justify-content: space-between;
-        padding: 10px;
-        padding-bottom: 5px;
+        padding: 10px 10px 0 10px;
         
         h3 {
             font-size: 1rem;
@@ -125,7 +128,7 @@ main{
     }
     
     form {
-        margin:0 10px 10px 10px;
+        margin:0 10px 0px 10px;
         padding: 0px;
         width: calc(100% - 20px);
         border: solid $tag-search-color 1px;
@@ -172,9 +175,60 @@ main{
             padding: 0;
         }
     }
+
+    #selected-ingredient, #selected-appliance, #selected-ustensils{
+        max-height: 140px;
+        overflow: scroll;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        
+        li {
+            font-size: 0.875rem;
+            padding: 5px 10px;
+            margin: 0;
+            margin-bottom: 5px;
+            background-color: $hover-bck-color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover{
+                background-color: $hover-bck-color;
+                font-weight: bolder;
+                cursor: pointer;
+            }
+
+            .keyword-erase {
+                background-color: $title-text-color;
+                color: $alt-bck-color;
+                height: 17px;
+                width: 17px;
+                font-size: small;
+                border-radius: 50%;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #a5a5a5;
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #7c7c7c;
+        }
+
+    }
     
-    #key-list{
-        height: 85%;
+    .key-list{
+        max-height: calc(330px - 66px);
         overflow: scroll;
         overflow-x: hidden;
         scrollbar-width: thin;
@@ -205,6 +259,10 @@ main{
     
 }
 
+.hidden{
+    display: none!important;
+}
+
 .test { // TODO Pense à retirer avant mise en production
     border: solid green 3px;
 }
@@ -214,12 +272,37 @@ main{
 }
 
 .test3 {
-    border: solid pink 3px;    
+    border: solid pink 3px;  
+    height: 56px;  
 }
 
 #recipes-result {
     height: 56px;
     font-family: $font-main-title;
+}
+
+#selected-tag{
+    height: fit-content;
+    padding: 10px 0;
+    
+    li{
+        font-family: $font-text;
+        font-size: 14px;
+        color: $title-text-color;
+        height: 100%;
+        width: 200px;
+        padding: 20px;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $hover-bck-color;
+        border-radius: 10px;
+
+        i{
+            color: $main-text-color;
+        }
+    }
 }
 
 #recipes{

@@ -1,22 +1,31 @@
 export class Search {
-    constructor(recipes, type){
+    constructor(recipes){
         this._word
-        this._type = type
         this._recipeName = recipes.getRecipeName()
         this._recipeDescription = recipes.getRecipeDescription()
         this._recipeIngredient = recipes.getRecipeIngredients()
+        this._recipeAppliance = recipes.getRecipeAppliances()
+        this._recipeUstensil = recipes.getRecipeUstensils()
     }
     
-    search(word){
+    search(word, type){
         this._word = word
         if(this._word){
             let searchResult = []
             
-            const mainTypeSearchResult = this.mainTypeSearch()
-            
-            mainTypeSearchResult.forEach(resultID => {
-                searchResult.push(resultID)
-            })
+            if(type === 'main'){
+                const mainTypeSearchResult = this.mainTypeSearch()
+                
+                mainTypeSearchResult.forEach(resultID => {
+                    searchResult.push(resultID)
+                })
+            }else if(type === 'tag'){
+                const tagTypeSearchResult = this.tagTypeSearch()
+                
+                tagTypeSearchResult.forEach(resultID => {
+                    searchResult.push(resultID)
+                })
+            }
             
             return searchResult
         }
@@ -73,6 +82,57 @@ export class Search {
         
         return mainTypeSearchResult
     }
+
+    tagTypeSearch(){
+        const tagTypeSearchResult = []
+        const applianceResult = this.applianceSearch()
+        const ustensilResult = this.ustensilSearch()
+        const ingredientResult = this.ingredientSearch()
+                
+        applianceResult.forEach(resultID => {
+            let isDuplicate = false
+            for(let i = 0; i < tagTypeSearchResult.length; i++){
+                if (resultID === tagTypeSearchResult[i]){
+                    isDuplicate = true
+                    break
+                }
+            }
+            
+            if(!isDuplicate){
+                tagTypeSearchResult.push(resultID)
+            }
+        })
+        
+        ustensilResult.forEach(resultID => {
+            let isDuplicate = false
+            for(let i = 0; i < tagTypeSearchResult.length; i++){
+                if (resultID === tagTypeSearchResult[i]){
+                    isDuplicate = true
+                    break
+                }
+            }
+            
+            if(!isDuplicate){
+                tagTypeSearchResult.push(resultID)
+            }
+        })
+        
+        ingredientResult.forEach(resultID => {
+            let isDuplicate = false
+            for(let i = 0; i < tagTypeSearchResult.length; i++){
+                if (resultID === tagTypeSearchResult[i]){
+                    isDuplicate = true
+                    break
+                }
+            }
+            
+            if(!isDuplicate){
+                tagTypeSearchResult.push(resultID)
+            }
+        })
+        
+        return tagTypeSearchResult
+    }
     
     nameSearch(){
         let nameResultSearch = []
@@ -85,7 +145,6 @@ export class Search {
                     this.removeAccents(this._word.toLowerCase()), this.removeAccents(wordsArray[j].toLowerCase()))
                 if(partialMatch){
                     nameResultSearch.push(this._recipeName[i].id)
-                    console.log('Name: ', wordsArray[j], this._recipeName[i].id)
                     break
                 }
             }
@@ -104,7 +163,6 @@ export class Search {
                 const partialMatch = this.isPartialMatch(
                     this.removeAccents(this._word.toLowerCase()), this.removeAccents(wordsArray[j].toLowerCase()))
                 if(partialMatch){
-                    console.log('Desciption: ', wordsArray[j], this._recipeDescription[i].id)
                     descriptionResultSearch.push(this._recipeDescription[i].id)
                     break
                 }
@@ -128,7 +186,6 @@ export class Search {
                     const partialMatch = this.isPartialMatch(
                         this.removeAccents(this._word.toLowerCase()), this.removeAccents(wordsArray[j].toLowerCase()))
                     if(partialMatch){
-                        console.log('Ingrédients: ', wordsArray[j], this._recipeIngredient[i].id)
                         ingredientResultSearch.push(this._recipeIngredient[i].id)
                         break
                     }
@@ -139,6 +196,50 @@ export class Search {
         }
         
         return ingredientResultSearch
+    }
+    
+    applianceSearch(){
+        let applianceResultSearch = []
+
+        for(let i = 0; i < this._recipeAppliance.length; i++){
+            const wordsArray = this._recipeAppliance[i].appliance.split(' ')
+            
+            for(let j = 0; j < wordsArray.length; j++){
+                const partialMatch = this.isPartialMatch(
+                    this.removeAccents(this._word.toLowerCase()), this.removeAccents(wordsArray[j].toLowerCase()))
+                if(partialMatch){
+                    applianceResultSearch.push(this._recipeAppliance[i].id)
+                    break
+                }
+            }
+        }
+        
+        return applianceResultSearch
+    }
+
+    ustensilSearch(){
+        let ustensilResultSearch = []
+
+        for(let i = 0; i < this._recipeUstensil.length; i++){
+            const listOfUstensil = this._recipeUstensil[i].ustensils
+
+            listOfUstensil.forEach(ustensil => {
+                const wordsArray = ustensil.split(' ')
+
+                for(let j = 0; j < wordsArray.length; j++){
+                    const partialMatch = this.isPartialMatch(
+                        this.removeAccents(this._word.toLowerCase()), this.removeAccents(wordsArray[j].toLowerCase()))
+                    if(partialMatch){
+                        ustensilResultSearch.push(this._recipeUstensil[i].id)
+                        break
+                    }
+                }
+                
+            })
+            
+        }
+        
+        return ustensilResultSearch
     }
     
     isPartialMatch(word, targetWord) {

@@ -53,7 +53,7 @@ export class FormController {
             input.addEventListener('input', (e) => {
                 const userInputValue = input.value
                 const regexTest = this.regexTest(userInputValue)
-                
+
                 this._resetInputButton = input.nextElementSibling
                 if(!this._resetInputButton.classList.contains('bi-x')){
                     this.createResetButton(input)
@@ -63,6 +63,10 @@ export class FormController {
                 
                 if (userInputValue.length >= 3 && regexTest){
                     this.updateValue(input)
+                }
+
+                if(!userInputValue){
+                    this._resetInputButton.remove()
                 }
             })
         }
@@ -81,11 +85,11 @@ export class FormController {
             this.updateValue('')
             this._resetInputButton.remove()
         })
+
     }
 
     updateValue(input) {
         this._searchValue = input.value
-        console.log('Valeur mise à jour', this._searchValue)
 
         if (this._updateCallback) {
             this._updateCallback(this._searchValue)
@@ -96,17 +100,17 @@ export class FormController {
         input.value = ''
     }
     
-    async getValue() {
-        return new Promise((resolve) => {
-            const intervalId = setInterval(() => {
-                if (this._searchValue !== null){
-                    clearInterval(intervalId)
-                    resolve(this._searchValue.toLowerCase())
-                    this._searchValue = null
-                }
-            }, 100)
-        })
-    }
+    // async getValue() {
+    //     return new Promise((resolve) => {
+    //         const intervalId = setInterval(() => {
+    //             if (this._searchValue !== null){
+    //                 clearInterval(intervalId)
+    //                 resolve(this._searchValue.toLowerCase())
+    //                 this._searchValue = null
+    //             }
+    //         }, 100)
+    //     })
+    // }
     
     regexTest(word) {
         const regex = /^[A-Za-zÀ-ÿ][a-zÀ-ÿ-]+$/
@@ -117,5 +121,4 @@ export class FormController {
         this._updateCallback = callback
     }
 
-    
 }

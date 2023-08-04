@@ -11903,7 +11903,9 @@ main {
 }
 
 #tag-search {
+  height: 70px;
   padding: 20px 0 0 0;
+  margin-bottom: 15px;
   position: relative;
   font-family: "Manrope", sans-serif;
   color: #1b1b1b;
@@ -11913,7 +11915,6 @@ main {
 #tag-search ul {
   margin: 0;
   padding: 0;
-  max-height: 330px;
   overflow: hidden;
   width: 20%;
   position: absolute;
@@ -11925,6 +11926,7 @@ main {
   box-shadow: 3px 3px 15px 6px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-flow: column;
+  gap: 10px;
 }
 #tag-search ul:nth-child(2) {
   left: 25%;
@@ -11939,8 +11941,7 @@ main {
   display: flex;
   flex: row;
   justify-content: space-between;
-  padding: 10px;
-  padding-bottom: 5px;
+  padding: 10px 10px 0 10px;
 }
 #tag-search .tag-search-heading h3, #tag-search .tag-search-heading .h3 {
   font-size: 1rem;
@@ -11955,7 +11956,7 @@ main {
   margin-bottom: 10px;
 }
 #tag-search form {
-  margin: 0 10px 10px 10px;
+  margin: 0 10px 0px 10px;
   padding: 0px;
   width: calc(100% - 20px);
   border: solid #c6c6c6 1px;
@@ -11997,29 +11998,76 @@ main {
   margin: 0;
   padding: 0;
 }
-#tag-search #key-list {
-  height: 85%;
+#tag-search #selected-ingredient, #tag-search #selected-appliance, #tag-search #selected-ustensils {
+  max-height: 140px;
   overflow: scroll;
   overflow-x: hidden;
   scrollbar-width: thin;
 }
-#tag-search #key-list li {
+#tag-search #selected-ingredient li, #tag-search #selected-appliance li, #tag-search #selected-ustensils li {
+  font-size: 0.875rem;
+  padding: 5px 10px;
+  margin: 0;
+  margin-bottom: 5px;
+  background-color: #FFD15B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#tag-search #selected-ingredient li:hover, #tag-search #selected-appliance li:hover, #tag-search #selected-ustensils li:hover {
+  background-color: #FFD15B;
+  font-weight: bolder;
+  cursor: pointer;
+}
+#tag-search #selected-ingredient li .keyword-erase, #tag-search #selected-appliance li .keyword-erase, #tag-search #selected-ustensils li .keyword-erase {
+  background-color: #000;
+  color: #fff;
+  height: 17px;
+  width: 17px;
+  font-size: small;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#tag-search #selected-ingredient::-webkit-scrollbar, #tag-search #selected-appliance::-webkit-scrollbar, #tag-search #selected-ustensils::-webkit-scrollbar {
+  width: 5px;
+}
+#tag-search #selected-ingredient::-webkit-scrollbar-thumb, #tag-search #selected-appliance::-webkit-scrollbar-thumb, #tag-search #selected-ustensils::-webkit-scrollbar-thumb {
+  background-color: #a5a5a5;
+}
+#tag-search #selected-ingredient::-webkit-scrollbar-thumb:hover, #tag-search #selected-appliance::-webkit-scrollbar-thumb:hover, #tag-search #selected-ustensils::-webkit-scrollbar-thumb:hover {
+  background-color: #7c7c7c;
+}
+#tag-search .key-list {
+  max-height: 264px;
+  overflow: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+}
+#tag-search .key-list li {
   font-size: 0.875rem;
   padding: 5px 10px;
   margin: 0;
 }
-#tag-search #key-list li:hover {
+#tag-search .key-list li:hover {
   background-color: #FFD15B;
   cursor: pointer;
 }
-#tag-search #key-list::-webkit-scrollbar {
+#tag-search .key-list::-webkit-scrollbar {
   width: 5px;
 }
-#tag-search #key-list::-webkit-scrollbar-thumb {
+#tag-search .key-list::-webkit-scrollbar-thumb {
   background-color: #a5a5a5;
 }
-#tag-search #key-list::-webkit-scrollbar-thumb:hover {
+#tag-search .key-list::-webkit-scrollbar-thumb:hover {
   background-color: #7c7c7c;
+}
+
+.hidden {
+  display: none !important;
 }
 
 .test {
@@ -12032,11 +12080,34 @@ main {
 
 .test3 {
   border: solid pink 3px;
+  height: 56px;
 }
 
 #recipes-result {
   height: 56px;
   font-family: "Anton", sans-serif;
+}
+
+#selected-tag {
+  height: fit-content;
+  padding: 10px 0;
+}
+#selected-tag li {
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #000;
+  height: 100%;
+  width: 200px;
+  padding: 20px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFD15B;
+  border-radius: 10px;
+}
+#selected-tag li i {
+  color: #1b1b1b;
 }
 
 #recipes article {
